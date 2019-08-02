@@ -12,7 +12,7 @@ class Server {
     }
 
     config(): void {
-        this.app.set('port', process.env.port || 1337);
+        this.app.set('port', process.env.port || 8080);
         this.app.use(morgan('dev'));
     }
 
