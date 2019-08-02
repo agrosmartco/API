@@ -13,7 +13,7 @@ class Server {
         this.routes();
     }
     config() {
-        this.app.set('port', process.env.port || 3000);
+        this.app.set('port', process.env.port || 1337);
         this.app.use(morgan('dev'));
     }
     routes() {
