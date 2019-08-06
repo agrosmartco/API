@@ -1,6 +1,7 @@
 import express, { Application } from 'express';
 import morgan = require('morgan');
 import indexRoutes from './routes/indexRoutes';
+import productsRoutes from './routes/productsRoutes';
 
 class Server {
     public app: Application;
@@ -19,6 +20,7 @@ class Server {
     routes(): void {
 
         this.app.use(indexRoutes);
+        this.app.use('/api/products',productsRoutes);
     }
 
     start(): void {

@@ -6,6 +6,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
 const morgan = require("morgan");
 const indexRoutes_1 = __importDefault(require("./routes/indexRoutes"));
+const productsRoutes_1 = __importDefault(require("./routes/productsRoutes"));
 class Server {
     constructor() {
         this.app = express_1.default();
@@ -18,6 +19,7 @@ class Server {
     }
     routes() {
         this.app.use(indexRoutes_1.default);
+        this.app.use('/api/products', productsRoutes_1.default);
     }
     start() {
         this.app.listen(this.app.get('port'), () => {
