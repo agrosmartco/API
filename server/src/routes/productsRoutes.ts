@@ -11,10 +11,11 @@ class productsRoutes {
 
     config(): void {
 
-        this.router.get('/',productscontroller.index);
+        this.router.get('/',productscontroller.getAllProducts);
         this.router.get('/:id',productscontroller.getProduct);
         this.router.post('/',productscontroller.createProduct);
         this.router.delete('/:id',productscontroller.deleteProduct);
+        this.router.put('/:id',productscontroller.updateProduct)
 
     }
 

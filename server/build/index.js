@@ -4,7 +4,8 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = __importDefault(require("express"));
-const morgan = require("morgan");
+const morgan_1 = __importDefault(require("morgan"));
+const cors_1 = __importDefault(require("cors"));
 const indexRoutes_1 = __importDefault(require("./routes/indexRoutes"));
 const productsRoutes_1 = __importDefault(require("./routes/productsRoutes"));
 class Server {
@@ -15,7 +16,10 @@ class Server {
     }
     config() {
         this.app.set('port', process.env.port || 8080);
-        this.app.use(morgan('dev'));
+        this.app.use(morgan_1.default('dev'));
+        this.app.use(cors_1.default());
+        this.app.use(express_1.default.json());
+        this.app.use(express_1.default.urlencoded({ extended: true }));
     }
     routes() {
         this.app.use(indexRoutes_1.default);

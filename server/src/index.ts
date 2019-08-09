@@ -1,5 +1,6 @@
 import express, { Application } from 'express';
-import morgan = require('morgan');
+import morgan from 'morgan';
+import cors from 'cors';
 import indexRoutes from './routes/indexRoutes';
 import productsRoutes from './routes/productsRoutes';
 
@@ -15,6 +16,9 @@ class Server {
     config(): void {
         this.app.set('port', process.env.port || 8080);
         this.app.use(morgan('dev'));
+        this.app.use(cors());
+        this.app.use(express.json());
+        this.app.use(express.urlencoded({ extended: true }));
     }
 
     routes(): void {
