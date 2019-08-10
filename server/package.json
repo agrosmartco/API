@@ -17,7 +17,6 @@
     "cors": "^2.8.5",
     "express": "^4.17.1",
     "morgan": "^1.9.1",
-    "msnodesqlv8": "^0.8.2",
     "mssql": "^5.1.0",
     "promise-mysql": "^4.1.0"
   },
