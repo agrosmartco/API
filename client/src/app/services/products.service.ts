@@ -7,7 +7,7 @@ import {Products} from '../models/products'
 })
 export class ProductsService {
 
-  API_URI='http://localhost:8080/api'
+  API_URI='https://ecomagro.azurewebsites.net/api'
 
   constructor(private http:HttpClient) { }
 
