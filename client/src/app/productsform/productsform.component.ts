@@ -33,12 +33,11 @@ export class ProductsformComponent implements OnInit {
       this.productService.getOneProduct(params.id)
         .subscribe(
           res => {
-            console.log(res);
-         
-            this.products = res;
+
+            this.products = res[0];
 
             this.product = this.products;
-           
+
             this.edit = true;
 
           },
@@ -51,10 +50,8 @@ export class ProductsformComponent implements OnInit {
 
   saveNewProduct() {
 
-    // delete this.product.codigo;
-
     console.log(this.product);
-    
+
     this.productService.saveProduct(this.product)
 
       .subscribe(
@@ -71,24 +68,23 @@ export class ProductsformComponent implements OnInit {
 
   }
 
-  
-  updateProduct()
-  {
+  updateProduct() {
 
-    // delete this.product.create_at;
 
-    // this.productService.up(this.product.codigo,this.products)
-    //     .subscribe(
-    //       res=>{
-    //       console.log(res);
-    //       this.router.navigate(['/']);
+    this.productService.updateProduct(this.product.codigo, this.product)
+      .subscribe(
+        res => {
+          console.log(res);
+          this.router.navigate(['/products']);
 
-    //       },
-    //       err=>console.error(err)
-          
-          
-    //     )
+        },
+        err => console.error(err)
+
+
+      )
 
   }
+
+
 
 }
