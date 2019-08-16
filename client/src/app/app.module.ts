@@ -6,15 +6,23 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 import { AppComponent } from './app.component';
-import { ProductsComponent } from './products/products.component';
+import { ProductsComponent } from './components/products/products.component';
 import { AppRoutingModule } from './app-routing.module';
-import { ProductsformComponent } from './productsform/productsform.component';
+import { ProductsformComponent } from './components/productsform/productsform.component';
+import { NavigateComponent } from './components/navigate/navigate.component';
+import { LoginComponent } from './components/login/login.component';
+import { FooterComponent } from './components/footer/footer.component';
+
+
 
 @NgModule({
   declarations: [
     AppComponent,
     ProductsComponent,
-    ProductsformComponent
+    ProductsformComponent,
+    NavigateComponent,
+    LoginComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
@@ -22,7 +30,8 @@ import { ProductsformComponent } from './productsform/productsform.component';
     RouterModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+
 
   ],
   providers: [],

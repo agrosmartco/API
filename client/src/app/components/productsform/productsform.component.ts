@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Products } from '../models/products';
-import { ProductsService } from '../services/products.service'
+import { Products } from '../../models/products';
+import { ProductsService } from '../../services/products.service'
 import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -17,8 +17,8 @@ export class ProductsformComponent implements OnInit {
 
     codigo: 0,
     descripcion: '',
-    cantidad: 0,
-    precio: 0,
+    cantidad: null,
+    precio: null,
     imagen: '',
 
   };
@@ -83,6 +83,11 @@ export class ProductsformComponent implements OnInit {
 
       )
 
+  }
+
+
+  logIn(): boolean {
+    return (localStorage.getItem('auth_token') !== null);
   }
 
 

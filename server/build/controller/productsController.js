@@ -85,17 +85,16 @@ class productsController {
             var descripcion = req.body.descripcion;
             var cantidad = req.body.cantidad;
             var precio = req.body.precio;
-            console.log(descripcion);
-            console.log(cantidad);
-            console.log(precio);
+            var imagen = req.body.imagen;
             try {
                 yield database_1.default.request()
                     .input('codigo', mssql_1.default.VarChar, id)
                     .input('descripcion', mssql_1.default.VarChar, [descripcion])
                     .input('cantidad', mssql_1.default.VarChar, [cantidad])
                     .input('precio', mssql_1.default.VarChar, [precio])
-                    .query('update product set descripcion = @descripcion,cantidad = @cantidad,precio = @precio where codigo = @codigo');
-                res.json({ text: 'updating a game ' + req.params.id });
+                    .input('imagen', mssql_1.default.VarChar, [imagen])
+                    .query('update product set descripcion = @descripcion,cantidad = @cantidad,precio = @precio,imagen = @imagen where codigo = @codigo');
+                res.json({ text: 'updating a product on data base' + req.params.id });
             }
             catch (error) {
                 res.json({ message: 'Error ' + req.body });

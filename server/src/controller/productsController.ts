@@ -21,7 +21,7 @@ class productsController {
 
         try {
             const { id } = req.params;
-            const product = await pool.request().input('id', sql.VarChar,[id]).query('SELECT  codigo,descripcion,cantidad,precio,imagen FROM product WHERE codigo = @id');
+            const product = await pool.request().input('id', sql.VarChar, [id]).query('SELECT  codigo,descripcion,cantidad,precio,imagen FROM product WHERE codigo = @id');
             if (product.recordset.length > 0) {
                 res.json(product.recordset)
             }
@@ -34,8 +34,8 @@ class productsController {
 
 
     public async createProduct(req: Request, res: Response): Promise<void> {
-        
-        
+
+
         var codigo = req.body.codigo
         var descripcion = req.body.descripcion
         var cantidad = req.body.cantidad
@@ -88,10 +88,7 @@ class productsController {
         var descripcion = req.body.descripcion
         var cantidad = req.body.cantidad
         var precio = req.body.precio
-
-        console.log(descripcion);
-        console.log(cantidad);
-        console.log(precio);
+        var imagen = req.body.imagen
 
         try {
             await pool.request()
@@ -99,15 +96,18 @@ class productsController {
                 .input('descripcion', sql.VarChar, [descripcion])
                 .input('cantidad', sql.VarChar, [cantidad])
                 .input('precio', sql.VarChar, [precio])
-                .query('update product set descripcion = @descripcion,cantidad = @cantidad,precio = @precio where codigo = @codigo');
+                .input('imagen', sql.VarChar, [imagen])
 
-                res.json({ text: 'updating a game ' + req.params.id });
+                .query('update product set descripcion = @descripcion,cantidad = @cantidad,precio = @precio,imagen = @imagen where codigo = @codigo');
+
+
+            res.json({ text: 'updating a product on data base' + req.params.id });
 
         } catch (error) {
             res.json({ message: 'Error ' + req.body });
         }
 
-       
+
 
 
 

@@ -3,6 +3,7 @@ import morgan from 'morgan';
 import cors from 'cors';
 import indexRoutes from './routes/indexRoutes';
 import productsRoutes from './routes/productsRoutes';
+import loginRoutes from './routes/loginRoutes';
 
 class Server {
     public app: Application;
@@ -24,13 +25,14 @@ class Server {
     routes(): void {
 
         this.app.use(indexRoutes);
-        this.app.use('/api/products',productsRoutes);
+        this.app.use('/api/products', productsRoutes);
+        this.app.use('/api/login', loginRoutes);
     }
 
     start(): void {
-        this.app.listen(this.app.get('port'),()=>{
+        this.app.listen(this.app.get('port'), () => {
             console.log('server on port', this.app.get('port'));
-            
+
         })
 
     }

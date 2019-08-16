@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ProductsService } from '../services/products.service';
-import { Products } from '../models/products'
+import { ProductsService } from '../../services/products.service';
+import { Products } from '../../models/products'
 import { Router } from '@angular/router';
 
 @Component({
@@ -10,6 +10,8 @@ import { Router } from '@angular/router';
 })
 export class ProductsComponent implements OnInit {
   products: any = [];
+
+  delete: boolean = true;
 
   product: Products = {
 
@@ -24,6 +26,7 @@ export class ProductsComponent implements OnInit {
 
   ngOnInit() {
     this.getProducts();
+    this.delete = false;
   }
 
 
@@ -53,9 +56,8 @@ export class ProductsComponent implements OnInit {
   }
 
 
-
   editProduct(id: string) {
-console.log(id);
+    console.log(id);
 
     this.productService.updateProduct(id, this.product)
       .subscribe(
@@ -67,6 +69,19 @@ console.log(id);
         err => console.log(err)
 
       )
+  }
+
+  funcDelete(valid: boolean) {
+    if (valid) {
+      this.delete = true;
+    } else {
+      this.delete = false;
+    }
+
+  }
+
+  logIn(): boolean {
+    return (localStorage.getItem('auth_token') !== null);
   }
 
 }

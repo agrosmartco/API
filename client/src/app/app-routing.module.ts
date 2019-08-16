@@ -1,13 +1,14 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { ProductsComponent } from './products/products.component';
-import { ProductsformComponent } from './productsform/productsform.component';
+import { ProductsComponent } from './components/products/products.component';
+import { ProductsformComponent } from './components/productsform/productsform.component';
+import { LoginComponent } from './components/login/login.component';
 
 
 const routes: Routes = [
   {
     path: '',
-    redirectTo: '/products',
+    redirectTo: '/login',
     pathMatch: 'full'
   },
   {
@@ -21,6 +22,10 @@ const routes: Routes = [
   {
     path: 'products/edit/:id',
     component: ProductsformComponent
+  },
+  {
+    path:'login',
+    component:LoginComponent
   }
 
 ]
