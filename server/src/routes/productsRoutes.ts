@@ -15,7 +15,7 @@ class productsRoutes {
         this.router.get('/:id',productscontroller.getProduct);
         this.router.post('/',productscontroller.createProduct);
         this.router.delete('/:id',productscontroller.deleteProduct);
-        this.router.put('/:id',productscontroller.updateProduct)
+        this.router.put('/:id',productscontroller.updateProduct);
 
     }
 

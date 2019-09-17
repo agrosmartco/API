@@ -106,13 +106,7 @@ class productsController {
         } catch (error) {
             res.json({ message: 'Error ' + req.body });
         }
-
-
-
-
-
     }
-
 
 }
 
